@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ceneax.app.lib.qrscan">
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application>
+
+        <activity
+            android:name=".QRScanActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+
+    </application>
+
+</manifest>
