@@ -15,12 +15,12 @@
 
 ```Groovy
 allprojects {
-		repositories {
-			...
-			// 加入这行代码
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        // 加入这行代码
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 ##### 第二步：
@@ -28,8 +28,8 @@ allprojects {
 
 ```Groovy
 dependencies {
-	...
-	implementation 'com.github.ceneax:QRScan:需要引入的版本号'
+    ...
+    implementation 'com.github.ceneax:QRScan:需要引入的版本号'
 }
 ```
 
@@ -47,10 +47,10 @@ startActivityForResult(Intent(this, QRScanActivity::class.java), REQUEST_CODE)
 
 ```Kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-	super.onActivityResult(requestCode, resultCode, data)
-	data?.extras?.apply {
-		Toast.makeText(this@MainActivity, getString("data", ""), Toast.LENGTH_SHORT).show()
-	}
+    super.onActivityResult(requestCode, resultCode, data)
+    data?.extras?.apply {
+        Toast.makeText(this@MainActivity, getString("data", ""), Toast.LENGTH_SHORT).show()
+    }
 }
 ```
 
@@ -82,27 +82,27 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-然后在Activity中初始化扫描类**（记得先申请拍照权限）**：
+然后在Activity中初始化扫描类 **（记得先申请拍照权限）** ：
 
 ```Kotlin
 private lateinit var mQRScan: QRScan
 
 override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+    super.onCreate(savedInstanceState)
+    setContentView(binding.root)
 
-        // 初始化扫描器
-        mQRScan = QRScan.Builder(this)
-            // 整个Builder方法中，只有这一个必须设置一个值，其他方法都是可选
-            .setQRPreviewView(binding.qrPreviewView)
-            // 设置扫描结果回调
-            .setScanCallback { bitmap, results ->
-                // bitmap 为相机中得到的图像，包含二维码
-                // results 为扫描结果数组，如果存在多个二维码，会返回多个结果
-                // 取第一个结果
-                taost(results[0].content)
-            }
-            .build()
+    // 初始化扫描器
+    mQRScan = QRScan.Builder(this)
+        // 整个Builder方法中，只有这一个必须设置一个值，其他方法都是可选
+        .setQRPreviewView(binding.qrPreviewView)
+        // 设置扫描结果回调
+        .setScanCallback { bitmap, results ->
+            // bitmap 为相机中得到的图像，包含二维码
+            // results 为扫描结果数组，如果存在多个二维码，会返回多个结果
+            // 取第一个结果
+            taost(results[0].content)
+        }
+        .build()
 }
 ```
 
@@ -120,8 +120,8 @@ mQRScan.rescan(2000)
 
 ```Kotlin
 override fun onDestroy() {
-	super.onDestroy()
-	mQRScan.release()
+    super.onDestroy()
+    mQRScan.release()
 }
 ```
 
