@@ -1,0 +1,1 @@
+[![](https://jitpack.io/v/ceneax/QRScan.svg)](https://jitpack.io/#ceneax/QRScan)
