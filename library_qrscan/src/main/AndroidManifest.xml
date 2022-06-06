@@ -10,7 +10,8 @@
         <activity
             android:name=".QRScanActivity"
             android:screenOrientation="portrait"
-            android:exported="true"/>
+            android:exported="true"
+            android:hardwareAccelerated="true" />
 
     </application>
 

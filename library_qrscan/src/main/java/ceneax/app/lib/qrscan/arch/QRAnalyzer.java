@@ -23,7 +23,7 @@ public abstract class QRAnalyzer implements ImageAnalysis.Analyzer {
         mMainHandler.postDelayed(runnable, delayMillis);
     }
 
-    protected final void onResult(@NonNull Bitmap bitmap, @NonNull ParseResult... results) {
+    protected final void onResult(@NonNull Bitmap bitmap, @NonNull ParseResult[] results) {
         if (mScanCallback == null) {
             return;
         }

@@ -84,13 +84,13 @@ public final class ZXingAnalyzer extends QRAnalyzer {
             }
 
             // 识别到结果，执行回调
+            ParseResult parseResult = new ParseResult(
+                    transResultPoints(result.getResultPoints()),
+                    result.getText(),
+                    System.currentTimeMillis() - startTime
+            );
             onResult(ImageUtil.rotateBitmap(ImageUtil.yuvToBitmap(imageProxy),
-                    imageProxy.getImageInfo().getRotationDegrees()),
-                    new ParseResult(
-                        transResultPoints(result.getResultPoints()),
-                        result.getText(),
-                        System.currentTimeMillis() - startTime
-                    ));
+                    imageProxy.getImageInfo().getRotationDegrees()), new ParseResult[]{parseResult});
             // 停止接收图像帧数据
             mScanFinished = true;
         } catch (Exception ignored) {

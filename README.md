@@ -8,6 +8,17 @@
 
 ------------
 
+### 说明
+
+该库集成了两种解析框架：MLKit和ZXing。经过测试，得出了下面表格的对比数据：
+
+|  | 识别速度 | 识别率 | 解析速度 |
+| ------------ | ------------ | ------------ | ------------ |
+| MLKit | 快 | 好 | 较快 |
+| ZXing | 慢 | 较好 | 快 |
+
+MLKit使用了机器学习模型，在识别速度和识别率上面都比ZXing效果好，且默认就支持多个结果返回，所以本库默认使用MLKit来识别解析。
+
 ### 引入依赖
 
 ##### 第一步：
@@ -56,11 +67,11 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 
 实际运行效果截图：
 
-![](https://pic.imgdb.cn/item/629cca39094754312944b821.jpg)
+![](https://pic.imgdb.cn/item/629d73d20947543129cc3728.jpg)
 
 多个二维码的情况下，会弹出选择界面，每一个二维码都会被绿色的圆角矩形框选出来，点击你想要解析的某一个二维码即可：
 
-![](https://pic.imgdb.cn/item/629ccbe40947543129473432.jpg)
+![](https://pic.imgdb.cn/item/629d73ee0947543129cc5764.jpg)
 
 ### 自定义扫描界面样式
 
@@ -167,3 +178,7 @@ setScanCallback(IScanCallback scanCallback)
 // 具体可参考内置 DefaultQRAnimationView 的实现方式
 setAnimationView(QRAnimationView animationView)
 ```
+
+### QRCamera
+
+该库的相机模块可单独使用， **QRScan** 即为 **QRCamera** 扩展出来的类。所以如果不想使用扫描功能，而是想单独使用相机拍照录像，则直接使用 **QRCamera** 初始化相机即可，具体操作可参考源代码或后续补充相应文档
